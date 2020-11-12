@@ -85,17 +85,19 @@ export class Component {
     update(this._vdom, vdom);
     this._vdom = vdom;
   }
-  /*rerenderOf
-       let oldRange = this._range;
 
-       let range = document.createRange();
-       range.setStart(oldRange.startContainer, oldRange.startOffset) 
-       range.setEnd(oldRange.startContainer, oldRange.startOffset) 
-       this[RENDER_TO_DOM](range);
+  // rerender() {
+  //   let oldRange = this._range;
 
-       oldRange.setStart(range.endContainer, range.endOffset);
-       oldRange.deleteContents();
-   }*/
+  //   let range = document.createRange();
+  //   range.setStart(oldRange.startContainer, oldRange.startOffset)
+  //   range.setEnd(oldRange.startContainer, oldRange.startOffset)
+  //   this[RENDER_TO_DOM](range);
+
+  //   oldRange.setStart(range.endContainer, range.endOffset);
+  //   oldRange.deleteContents();
+  // }
+
   setState(newState) {
     if (this.state === null || typeof this.state !== "object") {
       this.state = newState;
@@ -123,32 +125,34 @@ class ElementWrapper extends Component {
     super(type);
     this.type = type;
   }
-  /*
-   setAttribute(name, value){
-       if(name.match(/^on([\s\S]+)$/)) {
-          this.root.addEventListener(RegExp.$1.replace(/^[\s\S], c => c.toLowerCase()), value); 
-       } else {
-          if(name === "className") {
-              this.root.setAttribute("class", value)
-          } else {
-              this.root.setAttribute(name, value)
 
-          }
-        }
-   appendChild(component){
-       let range = document.createRange();
-       range.setStart(this.root, this.root.childNodes.length);
-       range.setEnd(this.root, this.root.childNodes.length);
-       component[RENDER_TO_DOM(range);
-   }*/
+  // setAttribute(name, value) {
+  //   if (name.match(/^on([\s\S]+)$/)) {
+  //     this.root.addEventListener(RegExp.$1.replace(/^[\s\S]$/, c => c.toLowerCase()), value); 
+  //   } else {
+  //     if (name === "className") {
+  //       this.root.setAttribute("class", value);
+  //     } else {
+  //       this.root.setAttribute(name, value);
+  //     }
+  //   }
+  // }
+  //
+  // appendChild(component) {
+  //   let range = document.createRange();
+  //   range.setStart(this.root, this.root.childNodes.length);
+  //   range.setEnd(this.root, this.root.childNodes.length);
+  //   component[RENDER_TO_DOM(range)];
+  // }
+
   get vdom() {
     this.vchildren = this.children.map((child) => child.vdom);
     return this;
-    /*{
-          type: this.type,
-          props: this.props,
-          children: this.children.map(child => child.vdom)
-       }*/
+    // {
+    //   type: this.type,
+    //   props: this.props,
+    //   children: this.children.map(child => child.vdom)
+    // }
   }
 
   [RENDER_TO_DOM](range) {
